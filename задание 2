@@ -1,0 +1,17 @@
+function ipv4Parser(ip, subnet) {
+  const ipOctets = ip.split('.').map(Number);
+  const subnetOctets = subnet.split('.').map(Number);
+  
+  const networkOctets = [];
+  const hostOctets = [];
+  
+  for (let i = 0; i < 4; i++) {
+    const net = ipOctets[i] & subnetOctets[i];
+    const host = ipOctets[i] & (~subnetOctets[i] & 255);
+    
+    networkOctets.push(net);
+    hostOctets.push(host);
+  }
+  
+  return [networkOctets.join('.'), hostOctets.join('.')];
+}
