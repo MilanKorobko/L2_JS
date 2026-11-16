@@ -1,0 +1,6 @@
+function whatCentury(year)
+{
+  const c = Math.ceil(Number(year) / 100);
+  const s = (c % 100 >= 11 && c % 100 <= 13) ? 'th' : ['th', 'st', 'nd', 'rd'][c % 10] || 'th';
+  return c + s;
+}
